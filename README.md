@@ -1,3 +1,8 @@
+# This is Just an Idea
+
+There is no code, this README just represents an idea for a minimal library
+that, as of now, does not exist.
+
 # django-htmx-rest
 
 > A library for bringing together Django, the Django REST Framework, and htmx.
