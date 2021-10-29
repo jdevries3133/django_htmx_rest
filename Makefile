@@ -45,9 +45,9 @@ check-worktree:
 		exit 1; \
 	fi
 
-dist-production: clean check-worktree build test
+dist-production: clean check-worktree build tox
 	$(TWINE) upload dist/*
 
-dist-test: clean build test
+dist-test: clean build tox
 	$(TWINE) upload --repository testpypi dist/*
 
