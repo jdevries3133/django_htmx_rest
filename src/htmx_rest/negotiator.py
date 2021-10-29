@@ -1,4 +1,4 @@
-# Copyright (c) John DeVries
+# Copyright (c) 2021
 # All rights reserved.
 
 # This code is licensed under the MIT License.
