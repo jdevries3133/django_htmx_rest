@@ -21,14 +21,27 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-from rest_framework.response import Response as DrfResponse
+from rest_framework.negotiation import DefaultContentNegotiation
+from rest_framework.renderers import BrowsableAPIRenderer
+
+from .util import is_hx_request
 
 
-class Response(DrfResponse):
-    """Our response object is a drop-in wrapper around the DRF response. If
-    the request includes the `HX-Request` header, it will return a partial html
-    snippet using the provided template.
+class HtmxContentNegotiator(DefaultContentNegotiation):
+    def select_renderer(self, request, renderers, format_suffix=None):
+        """In the presence of a `HX-Request: true` header, return html content,
+        and avoid using the BrowsableAPIRenderer, which is the default for
+        html content types.
+        """
+        if is_hx_request(request):
+            for renderer in renderers:
+                if "text/html" in renderer.media_type and not isinstance(
+                    renderer, BrowsableAPIRenderer
+                ):
+                    return (renderer, renderer.media_type)
+            raise ValueError(
+                "no renderer_class capable of rendering html (not including "
+                "the BrowsableAPIRenderer) was provided."
+            )
 
-    Additionally, this will include hooks for our browsable API that extends
-    the default DRF browsable API, but that isn't implemented yet.
-    """
+        return super().select_renderer(request, renderers, format_suffix)

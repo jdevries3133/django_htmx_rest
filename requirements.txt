@@ -1,5 +1,6 @@
 asgiref==3.4.1
 attrs==21.2.0
+backports.entry-points-selectable==1.1.0
 black==21.9b0
 bleach==4.1.0
 build==0.7.0
@@ -7,9 +8,12 @@ certifi==2021.10.8
 charset-normalizer==2.0.7
 click==8.0.3
 colorama==0.4.4
+coverage==6.0.2
+distlib==0.3.3
 Django==3.2.8
 djangorestframework==3.12.4
 docutils==0.17.1
+filelock==3.3.1
 idna==3.3
 importlib-metadata==4.8.1
 iniconfig==1.1.1
@@ -25,6 +29,8 @@ py==1.10.0
 Pygments==2.10.0
 pyparsing==3.0.1
 pytest==6.2.5
+pytest-django==4.4.0
+pytest-pythonpath==0.7.3
 pytz==2021.3
 readme-renderer==30.0
 regex==2021.9.30
@@ -35,9 +41,12 @@ six==1.16.0
 sqlparse==0.4.2
 toml==0.10.2
 tomli==1.2.1
+tox==3.24.4
+tox-py==1.1.0
 tqdm==4.62.3
 twine==3.4.2
 typing-extensions==3.10.0.2
 urllib3==1.26.7
+virtualenv==20.9.0
 webencodings==0.5.1
 zipp==3.6.0

@@ -21,21 +21,9 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-from django.test import RequestFactory
-import pytest
-
-from htmx_rest.response import Response
-
-from . import fixtures
+from django.apps import AppConfig
 
 
-@pytest.fixture(params=("get", "patch", "put", "post", "delete"))
-def htmx_request(request):
-    factory = RequestFactory()
-    func = getattr(factory, request.param)
-    assert callable(func)
-    return func("/")
-
-
-def test_response_to_htmx_request(htmx_request):
-    ...
+class HtmxConfig(AppConfig):
+    default_auto_field = "django.db.models.BigAutoField"
+    name = "htmx"
