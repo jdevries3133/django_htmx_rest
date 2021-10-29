@@ -1,10 +1,24 @@
-name: CI
+name: tox
 
 on:
   push:
-    branches:
-    - main
+    paths:
+      - '**.py'
+      - '**.tsx?'
+      - '**.jsx?'
+      - '**.json'
+      - '**.sh'
+      - '**.yml'
+      - 'requirements.txt'
   pull_request:
+    paths:
+      - '**.py'
+      - '**.tsx?'
+      - '**.jsx?'
+      - '**.json'
+      - '**.sh'
+      - '**.yml'
+      - 'requirements.txt'
 
 jobs:
   tests:
@@ -14,8 +28,6 @@ jobs:
     strategy:
       matrix:
         python-version:
-        - 3.6
-        - 3.7
         - 3.8
         - 3.9
         - '3.10'
