@@ -27,11 +27,11 @@ import pytest
 from htmx_rest.util import is_hx_request
 
 # last spot: https://docs.pytest.org/en/latest/how-to/fixtures.html#parametrizing-fixtures
-@pytest.fixture(scope='module', params=(True, False))
+@pytest.fixture(scope="module", params=(True, False))
 def request_(request):
-    return APIRequestFactory().get('/', HTTP_HX_REQUEST='true' if request.param else '')
+    return APIRequestFactory().get("/", HTTP_HX_REQUEST="true" if request.param else "")
 
 
 def test_is_hx_request(request_):
     answer = is_hx_request(request_)
-    assert answer == (request_.META.get('HTTP_HX_REQUEST') == 'true')
+    assert answer == (request_.META.get("HTTP_HX_REQUEST") == "true")

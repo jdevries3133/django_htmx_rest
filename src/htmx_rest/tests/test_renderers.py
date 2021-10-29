@@ -33,7 +33,7 @@ from htmx_rest.renderers import HTMXPartialTemplateRenderer
 @pytest.fixture
 def prepared_renderer():
     renderer = HTMXPartialTemplateRenderer()
-    renderer.template_name = 'tests/partial.html'
+    renderer.template_name = "tests/partial.html"
     return renderer
 
 
@@ -65,20 +65,33 @@ def expected_partial():
 </div>
 """
 
+
 def test_normal_returns_partial(prepared_renderer, get_request, expected_html):
-    res = prepared_renderer.render({'message': 'Hello, world!'}, 'text/html', {
-        'view': 'foo view',
-        'request': get_request,
-        'response': SimpleNamespace(exception=False, template_name=prepared_renderer.template_name)
-    })
+    res = prepared_renderer.render(
+        {"message": "Hello, world!"},
+        "text/html",
+        {
+            "view": "foo view",
+            "request": get_request,
+            "response": SimpleNamespace(
+                exception=False, template_name=prepared_renderer.template_name
+            ),
+        },
+    )
     assert res == expected_html
 
 
 def test_hx_request_returns_partial(prepared_renderer, get_request, expected_partial):
-    with patch('htmx_rest.renderers.is_hx_request', return_value=True):
-        res = prepared_renderer.render({'message': 'Hello, world!'}, 'text/html', {
-            'view': 'foo view',
-            'request': get_request,
-            'response': SimpleNamespace(exception=False, template_name=prepared_renderer.template_name)
-        })
+    with patch("htmx_rest.renderers.is_hx_request", return_value=True):
+        res = prepared_renderer.render(
+            {"message": "Hello, world!"},
+            "text/html",
+            {
+                "view": "foo view",
+                "request": get_request,
+                "response": SimpleNamespace(
+                    exception=False, template_name=prepared_renderer.template_name
+                ),
+            },
+        )
         assert res == expected_partial
