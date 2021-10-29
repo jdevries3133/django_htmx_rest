@@ -1,5 +1,7 @@
 # django-htmx-rest
 
+[![tox](https://github.com/jdevries3133/django_htmx_rest/actions/workflows/ci.yml/badge.svg)](https://github.com/jdevries3133/django_htmx_rest/actions/workflows/ci.yml)
+
 > A library for bringing together the
 > [Django REST Framework](https://www.django-rest-framework.org/)
 > and
