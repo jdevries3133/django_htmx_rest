@@ -1,2 +1,17 @@
-- name: Black Check
-  uses: jpetrucciani/black-check@21.9b0
+name: Black Check
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**.py'
+  pull_request:
+    paths:
+      - '**.py
+
+jobs:
+  black_check:
+    uses: jpetrucciani/black-check@21.9b0
+    with:
+      path: "src"
