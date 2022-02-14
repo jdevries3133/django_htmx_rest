@@ -1,3 +1,10 @@
+# Not Production Ready
+
+This is just an idea of mine. I think that it has great potential, but I'm
+not really working on it right now. If you want the name and propose to
+create a project in a similar vision, I'm open to allowing that to happen.
+It's also possible that I'll pick up on this idea some day.
+
 # django-htmx-rest
 
 [![tox](https://github.com/jdevries3133/django_htmx_rest/actions/workflows/ci.yml/badge.svg)](https://github.com/jdevries3133/django_htmx_rest/actions/workflows/ci.yml)
